@@ -1,16 +1,19 @@
 clc;
 clear;
-run('~/vlfeat/toolbox/vl_setup.m');
-path='/home/shubham/Egocentric/dataset/GTEA/pngs/';
-path_destination='/home/shubham/Egocentric/dataset/GTEA/L1_stabilizer/';
+run('/media/sagan/Drive2/sagar/EGTEA_Gaze_Plus/vlfeat/toolbox/vl_setup.m');
+path='/media/sagan/Drive2/sagar/EGTEA_Gaze_Plus/pngs/';
+path_destination='/media/sagan/Drive2/sagar/EGTEA_Gaze_Plus/L1_stabilized_pngs/';
 videos=dir(path);
 videos=videos(3:end);
 [NumVideos,~]=size(videos);
-% parfor i=1:NumVideos
-%     frame_dir=strcat(path,videos(i).name,'/');
-%     out_dir=strcat(path_destination, videos(i).name,'/');
-%     im_size=main_stab(frame_dir, out_dir);
-% end
+parfor i=1:NumVideos
+    frame_dir=strcat(path,videos(i).name,'/');
+    out_dir=strcat(path_destination, videos(i).name,'/');
+    im_size=main_stab(frame_dir, out_dir);
+%     flag_to_skip=main_stab('/media/sagan/Drive2/sagar/EGTEA_Gaze_Plus/pngs/OP06-R03-BaconAndEggs-689180-690510-F016537-F016576/', '/media/sagan/Drive2/sagar/EGTEA_Gaze_Plus/L1_stabilized_pngs/OP06-R03-BaconAndEggs-689180-690510-F016537-F016576/');
+%     disp(flag_to_skip)
+%     fg
+end
 
 %% create video from image sequence 
 % for i =1:NumVideos

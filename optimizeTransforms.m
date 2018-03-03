@@ -1,7 +1,7 @@
 function n_transforms = optimizeTransforms( t_transforms, im_size )
 %%n_transforms summary
 % Find optimized camera path
-run('~/MATLAB/cvx/cvx_setup.m');
+run('/media/sagan/Drive2/sagar/EGTEA_Gaze_Plus/cvx/cvx_setup.m');
 n = size(t_transforms, 1);
 % Find crop window
 crop_ratio = 0.8

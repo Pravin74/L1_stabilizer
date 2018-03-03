@@ -1,9 +1,8 @@
-function transforms = getTransforms( im_array, features, descriptors )
+function [flag_to_skip, transforms] = getTransforms( im_array, features, descriptors )
 %getTransforms Summary
 %  Find original camera path
 
 num_frames = size(im_array, 1);
-
 % Find matches
 transforms = cell(num_frames - 1, 1);
 
@@ -14,8 +13,10 @@ for k = 1:num_frames - 1
     matched_a = features{k}(1:2, matches(1, :));
     matched_b = features{k + 1}(1:2, matches(2, :));
     
-    [tform, ~, ~] = estimateGeometricTransform(matched_b', matched_a', 'similarity');
-
+    [flag_to_skip,tform, ~,~] =my_estimateGeometricTransform( matched_b', matched_a', 'similarity');
+    if flag_to_skip~=0
+        break;
+    end
     transforms{k} = tform.T;
 end
 
