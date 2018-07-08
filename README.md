@@ -25,7 +25,7 @@ vlfeat
 
 2. Change vlfeat and cvx directory paths in `main.m` and `optimizeAffineTransforms.m`.
 3. Change original and output directory for frames in `main.m`.
-4. Run `main.m`.
+4. Run `L1_stablizer.m`.
 5. Merge frames.
 ```
     bash create_video.sh
